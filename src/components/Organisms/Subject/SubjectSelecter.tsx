@@ -11,6 +11,7 @@ const Wrapper = styled.View`
     top: 5vh;
     left: 5vw;
     padding: 16px;
+    z-index: 2;
 `
 
 
@@ -18,7 +19,6 @@ const Wrapper = styled.View`
 const GridWrapper = styled.View`
     width: 100%;
     height: 100%;
-    ;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 50px);

@@ -1,8 +1,8 @@
 import { useState } from "react"
 import styled from "styled-components/native"
 import React from "react"
-import { subjectDatas } from "../../Utils/Data/subjectLists"
-import { SubjectSelecter } from "../Organisms/Viewer/SubjectSelecter"
+import { subjectDatas } from "../../../Utils/Data/subjectLists"
+import { SubjectSelecter } from "./SubjectSelecter"
 
 
 const Wrapper = styled.View`
@@ -22,13 +22,18 @@ const BtnChangeSubject = styled.Button`
 `
 
 
+type props={
+    subjectText : string,
+    setSubjectText : Function,
+    selectModal : boolean,
+    setSelectModal : Function
+}
 
 
-export const Subject:React.FC = () =>{
+
+export const Subject:React.FC<props> = ({subjectText, setSubjectText, selectModal, setSelectModal}) =>{
     const subjects = subjectDatas;
 
-    const [subjectText, setSubjectText] = useState("기본값");
-    const [selectModal, setSelectModal] = useState(false);
 
     const subjectHandler = (subject : string) => {
         setSubjectText(subject)
