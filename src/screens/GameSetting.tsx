@@ -10,10 +10,24 @@ const Wrapper = styled.View`
 `;
 const Text = styled.Text``;
 
-export const GameSetting: React.FC = () => {
-  const [playerCnt, setPlayerCnt] = useState(3);
-  const [selectModal, setSelectModal] = useState(false);
-  const [subjectText, setSubjectText] = useState("제시어를 선택해주세요!");
+
+type props = {
+    playerCnt:number,
+    setPlayerCnt:Function,
+    selectModal:boolean,
+    setSelectModal:Function,
+    subjectText:string,
+    setSubjectText:Function
+}
+
+
+export const GameSetting: React.FC<props> = ({
+    playerCnt,
+    setPlayerCnt,
+    selectModal,
+    setSelectModal,
+    subjectText,
+    setSubjectText}) => {
 
   return (
     <Wrapper>
@@ -24,9 +38,6 @@ export const GameSetting: React.FC = () => {
         setSelectModal={setSelectModal}
       />
       <Counter count={playerCnt} setCount={setPlayerCnt} display={!selectModal} />
-      <Text>제시어</Text>
-      <Text>모드선택</Text>
-      <Text>게임시작</Text>
     </Wrapper>
   );
 };

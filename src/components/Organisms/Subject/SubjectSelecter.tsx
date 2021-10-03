@@ -39,9 +39,9 @@ export const SubjectSelecter:React.FC<props> = ({lists, setSubjectText}) =>{
         <Wrapper>
         {lists && 
             <GridWrapper>
-            {Object.keys(lists).map((list)=>{
+            {Object.keys(lists).map((list, idx)=>{
                 return(
-                    <WordContainer text={list} setSubjectText={setSubjectText} />
+                    <WordContainer key={idx} text={list} setSubjectText={setSubjectText} />
                 )
             })}
             </GridWrapper>
