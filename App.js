@@ -8,6 +8,7 @@ import { GiveRole } from "./src/screens/GiveRole";
 import { subjectDatas } from "./src/Utils/Data/subjectLists";
 import { getRandomWord } from "./src/Utils/Logic/subjectFunc";
 import { setPlayerRole } from "./src/Utils/Logic/setPlayer";
+import { Vote } from "./src/screens/Vote";
 
 const Wrapper = styled.View`
   flex: 1;
@@ -50,6 +51,7 @@ export default function App() {
         />
       )}
       {gameStep === 2 && <GiveRole subjectText={subjectText} playerCnt={playerCnt} liarNumber={liarNumber} playWord={playWord}/>}
+      {gameStep === 3 && <Vote playerCnt={playerCnt} liarNumber={liarNumber} subjectText={subjectText} playWord={playWord}/>}
       <StatusBar style="auto" />
     </Wrapper>
   );
