@@ -28,9 +28,10 @@ type props = {
     playerCnt : number
     liarNumber : number | null
     playWord : string | null
+    toNextStep : Function
 }
 
-export const GiveRole:React.FC<props> = ({subjectText, playerCnt, liarNumber, playWord}) => {
+export const GiveRole:React.FC<props> = ({subjectText, playerCnt, liarNumber, playWord, toNextStep}) => {
     const [roleStep, setRoleStep] = useState(-1);
     const [showInfo, setShowInfo] = useState(false);
     const playerArray = Array.apply(null, Array(playerCnt)).map((val, idx) => idx);
@@ -41,8 +42,13 @@ export const GiveRole:React.FC<props> = ({subjectText, playerCnt, liarNumber, pl
         setShowInfo(true)
     }
 
-    const hideInfo = () =>{
-        setShowInfo(false)
+    const hideInfo = (idx:number) =>{
+        if(idx === playerCnt-1){
+            toNextStep()
+        }
+        else{
+            setShowInfo(false)
+        }
     }
 
     return(
@@ -56,12 +62,12 @@ export const GiveRole:React.FC<props> = ({subjectText, playerCnt, liarNumber, pl
                     if(idx === roleStep){
                         if(liarNumber === player){
                             return(
-                                <Board title={"당신은 라이어입니다."} onPress={hideInfo}/>
+                                <Board title={"당신은 라이어입니다."} onPress={()=>hideInfo(idx)}/>
                             )
                         }
                         else{
                             return(
-                                <Board title={`제시어는 ${playWord}입니다!`} onPress={hideInfo}/>
+                                <Board title={`제시어는 ${playWord}입니다!`} onPress={()=>hideInfo(idx)}/>
                             )
                         }
                     }

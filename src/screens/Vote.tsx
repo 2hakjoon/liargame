@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { Button } from "react-native";
 import styled from "styled-components/native";
 import { subjectDatas } from "../Utils/Data/subjectLists";
 
@@ -45,11 +46,12 @@ type props ={
     liarNumber : number
     subjectText : string
     playWord : string
+    resetGameStep : Function
 }
 
 
 
-export const Vote:React.FC<props> =({playerCnt, liarNumber, subjectText, playWord}) => {
+export const Vote:React.FC<props> =({playerCnt, liarNumber, subjectText, playWord, resetGameStep}) => {
 
     const [voteDisplay, setVoteDisplay] = useState(true);
     const [liarGuess, setLiarGuess] = useState(false);
@@ -99,6 +101,7 @@ export const Vote:React.FC<props> =({playerCnt, liarNumber, subjectText, playWor
                 <ResultWrapper>
                     <Text>라이어는 {liarNumber + 1}번이었습니다!</Text>
                     <Text>라이어의 승리입니다.</Text>
+                    <Button title={"처음으로 돌아가기"} onPress={()=>resetGameStep()}/>
                 </ResultWrapper>
             }
 
@@ -112,6 +115,7 @@ export const Vote:React.FC<props> =({playerCnt, liarNumber, subjectText, playWor
                             )
                         })}
                     </GridWrapper>
+
                 </>
             }
 
@@ -120,7 +124,9 @@ export const Vote:React.FC<props> =({playerCnt, liarNumber, subjectText, playWor
                 <ResultWrapper>
                     <Text>제시어 : {playWord}</Text>
                     <Text>선택한 단어 : {liarSelect}</Text>
+                    <Button title={"처음으로 돌아가기"} onPress={()=>resetGameStep()}/>
                 </ResultWrapper>
+
                 </>
             }
 

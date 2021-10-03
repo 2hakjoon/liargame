@@ -36,10 +36,13 @@ export default function App() {
     setGameStep((prev) => prev + 1);
   };
 
+  const resetGameStep = ()=>{
+    setGameStep(0)
+  }
+
   return (
     <Wrapper>
-      <Button onPress={toNextStep} title={"click me"}></Button>
-      {gameStep === 0 && <PressStart />}
+      {gameStep === 0 && <PressStart toNextStep={toNextStep} />}
       {gameStep === 1 && (
         <GameSetting
           playerCnt={playerCnt}
@@ -48,10 +51,27 @@ export default function App() {
           setSelectModal={setSelectModal}
           subjectText={subjectText}
           setSubjectText={setSubjectText}
+          toNextStep={toNextStep}
         />
       )}
-      {gameStep === 2 && <GiveRole subjectText={subjectText} playerCnt={playerCnt} liarNumber={liarNumber} playWord={playWord}/>}
-      {gameStep === 3 && <Vote playerCnt={playerCnt} liarNumber={liarNumber} subjectText={subjectText} playWord={playWord}/>}
+      {gameStep === 2 && (
+        <GiveRole
+          subjectText={subjectText}
+          playerCnt={playerCnt}
+          liarNumber={liarNumber}
+          playWord={playWord}
+          toNextStep={toNextStep}
+        />
+      )}
+      {gameStep === 3 && (
+        <Vote
+          playerCnt={playerCnt}
+          liarNumber={liarNumber}
+          subjectText={subjectText}
+          playWord={playWord}
+          resetGameStep={resetGameStep}
+        />
+      )}
       <StatusBar style="auto" />
     </Wrapper>
   );
