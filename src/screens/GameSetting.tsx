@@ -7,7 +7,6 @@ import { Button } from "react-native";
 const Wrapper = styled.View`
   display: flex;
   flex-direction: column;
-  position: relative;
   height: 80%;
 `;
 const Text = styled.Text``;

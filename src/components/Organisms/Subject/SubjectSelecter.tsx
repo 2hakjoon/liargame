@@ -4,14 +4,9 @@ import { WordContainer } from "../../Atoms/Text/WordContainer";
 
 
 const Wrapper = styled.View`
-    width: 90vw;
-    height: 90vh;
+    width: 90%;
+    height: 90%;
     background-color: rebeccapurple;
-    position: absolute;
-    top: 5vh;
-    left: 5vw;
-    padding: 16px;
-    z-index: 2;
 `
 
 
@@ -19,9 +14,6 @@ const Wrapper = styled.View`
 const GridWrapper = styled.View`
     width: 100%;
     height: 100%;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 50px);
 `
 
 

@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState } from "react";
-import { Button } from "react-native";
+import { SafeAreaView, StyleSheet } from "react-native";
 import styled from "styled-components/native";
 import { PressStart } from "./src/screens/PressStart";
 import { GameSetting } from "./src/screens/GameSetting";
@@ -11,10 +11,6 @@ import { setPlayerRole } from "./src/Utils/Logic/setPlayer";
 import { Vote } from "./src/screens/Vote";
 
 const Wrapper = styled.View`
-  flex: 1;
-  background-color: "#fff";
-  align-self: "center";
-  justify-content: "center";
 `;
 
 export default function App() {
@@ -40,8 +36,15 @@ export default function App() {
     setGameStep(0)
   }
 
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      paddingTop: Platform.OS === 'android' ? 25 : 0
+  },
+  });
+
   return (
-    <Wrapper>
+    <SafeAreaView style={styles.container}>
       {gameStep === 0 && <PressStart toNextStep={toNextStep} />}
       {gameStep === 1 && (
         <GameSetting
@@ -73,6 +76,6 @@ export default function App() {
         />
       )}
       <StatusBar style="auto" />
-    </Wrapper>
+    </SafeAreaView>
   );
 }

@@ -62,12 +62,12 @@ export const GiveRole:React.FC<props> = ({subjectText, playerCnt, liarNumber, pl
                     if(idx === roleStep){
                         if(liarNumber === player){
                             return(
-                                <Board title={"당신은 라이어입니다."} onPress={()=>hideInfo(idx)}/>
+                                <Board key={idx} title={"당신은 라이어입니다."} onPress={()=>hideInfo(idx)}/>
                             )
                         }
                         else{
                             return(
-                                <Board title={`제시어는 ${playWord}입니다!`} onPress={()=>hideInfo(idx)}/>
+                                <Board key={idx} title={`제시어는 ${playWord}입니다!`} onPress={()=>hideInfo(idx)}/>
                             )
                         }
                     }

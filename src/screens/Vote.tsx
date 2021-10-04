@@ -24,10 +24,6 @@ const GridWrapper = styled.View`
     height: 90%;
     margin : 0 auto;
     border : 1px solid black;
-    display: grid;
-    gap: 10px;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, 40px);
 `
 
 const VoteCard = styled.Button`
@@ -90,7 +86,7 @@ export const Vote:React.FC<props> =({playerCnt, liarNumber, subjectText, playWor
                 <GridWrapper >
                     {playerArray.map((player, idx)=>{
                         return(
-                            <VoteCard key={idx} title={player+1} onPress={()=>selectLiarHander(idx)} />
+                            <VoteCard key={idx} title={`${player+1}`} onPress={()=>selectLiarHander(idx)} />
                             )
                         })
                     }
