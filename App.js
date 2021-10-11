@@ -16,6 +16,7 @@ const Wrapper = styled.View`
   width: 100%;
   height: 100%;
   background-color: ${p=>p.theme.black};
+  position: relative;
 `;
 
 export default function App() {

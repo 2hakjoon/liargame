@@ -43,7 +43,7 @@ export const GameSetting: React.FC<props> = ({
 
 
   return (
-    <ColumnWrapper w={"100%"} h={"100%"} p={"10%"}>
+    <ColumnWrapper w={"100%"} h={"90%"} p={"10%"}>
         {!selectModal ?
         <>
           <ColumnWrapper w={"100%"} h={"80%"} jc={"flex-start"}>
