@@ -36,8 +36,6 @@ export const GiveRole: React.FC<props> = ({
     (val, idx) => idx
   );
 
-  console.log(playerArray);
-
   const toNextRoleStep = () => {
     setRoleStep((prev) => prev + 1);
     setShowInfo(true);

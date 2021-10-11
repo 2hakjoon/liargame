@@ -77,8 +77,6 @@ export const Vote:React.FC<props> =({playerCnt, liarNumber, subjectText, playWor
             setguessResult(true)
     }
 
-    console.log(subjectDatas[subjectText])
-
     return(
         <Wrapper>
             

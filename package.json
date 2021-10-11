@@ -16,7 +16,8 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
     "react-native-admob": "^2.0.0-beta.6",
     "react-native-web": "^0.17.5",
-    "styled-components": "^5.3.1"
+    "styled-components": "^5.3.1",
+    "expo-ads-admob": "~10.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
