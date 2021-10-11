@@ -1,7 +1,10 @@
 import React from "react";
 import { useState } from "react";
-import { Button } from "react-native";
 import styled from "styled-components/native";
+import { BtnBasic } from "../components/Atoms/Button/BtnBasic";
+import { ColumnWrapper } from "../components/Atoms/Layout/ColumnWrapper";
+import { TextComp } from "../components/Atoms/Text/TextComp";
+import { WordWrapper } from "../components/Atoms/Text/WordWrapper";
 import { subjectDatas } from "../Utils/Data/subjectLists";
 
 
@@ -12,28 +15,25 @@ import { subjectDatas } from "../Utils/Data/subjectLists";
 const Wrapper = styled.View`
     width: 100%;
     height: 100%;
-`
-
-const Text = styled.Text`
-    width: 100px;
-    height: 30px;
-`
-
-const GridWrapper = styled.View`
-    width: 90%;
-    height: 90%;
-    margin : 0 auto;
-    border : 1px solid black;
-`
-
-const VoteCard = styled.Button`
-    width : 20px;
-    height: 20px;
+    padding: 10%;
 `
 
 const ResultWrapper = styled.View`
     width: 100%;
-    height: 100%;
+    height: 500px;
+    justify-content: space-around;
+    align-items: center;
+`
+
+
+const FlatWrapper = styled.FlatList`
+	width: 100%;
+	height: 100%;
+	margin: auto;
+	padding : 5%;
+	background-color:${p=>p.theme["gray"]};
+	display : flex;
+	margin-bottom: 10px;
 `
 
 
@@ -81,49 +81,48 @@ export const Vote:React.FC<props> =({playerCnt, liarNumber, subjectText, playWor
 
     return(
         <Wrapper>
-            <Text>투표 페이지</Text>
+            
             {voteDisplay &&
-                <GridWrapper >
-                    {playerArray.map((player, idx)=>{
-                        return(
-                            <VoteCard key={idx} title={`${player+1}`} onPress={()=>selectLiarHander(idx)} />
-                            )
-                        })
-                    }
-                </GridWrapper>
+                <>
+                    <TextComp t={"라이어 선택"} fs={"30px"} m={"0 auto 20px auto"}/>
+                    <FlatWrapper 
+                    data={playerArray}
+                    renderItem={({item}) => <WordWrapper t={item} onPress={selectLiarHander}/>}
+                    keyExtractor={(item, index) => index.toString()}
+                    />
+                </>
             }
 
             {voteResult &&
                 <ResultWrapper>
-                    <Text>라이어는 {liarNumber + 1}번이었습니다!</Text>
-                    <Text>라이어의 승리입니다.</Text>
-                    <Button title={"처음으로 돌아가기"} onPress={()=>resetGameStep()}/>
+                    <TextComp t={"라이어의 승리입니다."} fs = {"30px"} fc={"red"}/>
+                    <TextComp t={`라이어는 ${liarNumber + 1}번이었습니다!`} fs = {"20px"}/>
+                    <BtnBasic t={"처음으로 돌아가기"} onPress={()=>resetGameStep()} w={"100%"}/>
                 </ResultWrapper>
             }
 
             {liarGuess && 
                 <>
-                    <Text>카테고리 : {subjectText}</Text>
-                    <GridWrapper>
-                        {subjectDatas[subjectText].map((text, idx)=>{
-                            return(
-                                <VoteCard key={idx} title={text} onPress={()=>guessLiarHandler(text)} />
-                            )
-                        })}
-                    </GridWrapper>
+                    <TextComp t={`테마 : ${subjectText}`} fs ={"30px"} m={"0 auto 20px auto"} />
+
+                    <FlatWrapper 
+                    data={subjectDatas[subjectText]}
+                    renderItem={({item}) => <WordWrapper t={item} onPress={()=>guessLiarHandler(String(item))}/>}
+                    keyExtractor={(item, index) => index.toString()}
+                    />
 
                 </>
             }
 
             {guessResult &&
-                <>
-                <ResultWrapper>
-                    <Text>제시어 : {playWord}</Text>
-                    <Text>선택한 단어 : {liarSelect}</Text>
-                    <Button title={"처음으로 돌아가기"} onPress={()=>resetGameStep()}/>
-                </ResultWrapper>
-
-                </>
+                <ColumnWrapper w={"100%"} h={"60%"} jc={"space-around"}>
+                    <TextComp t={(playWord === liarSelect) ? "라이어의 승리입니다!" : "라이어의 패배입니다."} fs = {"30px"} fc={"red"}/>
+                    <ColumnWrapper>
+                        <TextComp t={`제시어 : ${playWord}`} m={"0 0 20px 0"}/>
+                        <TextComp t={`선택한 단어 : ${liarSelect}`}/>
+                    </ColumnWrapper>
+                    <BtnBasic t={"처음으로 돌아가기"} onPress={()=>resetGameStep()} w={"100%"}/>
+                </ColumnWrapper>
             }
 
         </Wrapper>

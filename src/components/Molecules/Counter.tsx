@@ -1,22 +1,19 @@
 import React from "react"
 import styled from "styled-components/native"
+import { BtnBasic } from "../Atoms/Button/BtnBasic"
+import { FlexWrapper } from "../Atoms/Layout/FlexWrapper"
+import { TextComp } from "../Atoms/Text/TextComp"
 
 
 
 const Wrapper = styled.View`
     width: 100%;
-    height: 100px;
     position :relative;
-    `
-const CountText = styled.Text`
-    height: 100%;
-    `
-const CountBtn = styled.Button`
-    position: absolute;
-    z-index: -1;
-    height: 80px;
-    width: 80px;
+    display: flex;
+    flex-direction: row;
 `
+
+
 
 
 
@@ -43,11 +40,14 @@ export const Counter:React.FC<props> = ({count, setCount, display}) => {
     return(
         <>
         {display&&
-            <Wrapper>
-            <CountBtn title={"+"} onPress={plusCountHandler}/>
-            <CountText>{count}</CountText>
-            <CountBtn title={"-"} onPress={minusCountHandler}/>
-            </Wrapper>
+            <FlexWrapper w={"100%"}>
+                <TextComp t={"인원 수"}/>
+                <FlexWrapper w={"40%"}>
+                    <BtnBasic t={"-"} onPress={minusCountHandler}/>
+                    <TextComp t={count}/>
+                    <BtnBasic t={"+"} onPress={plusCountHandler}/>
+                </FlexWrapper>
+            </FlexWrapper>
         }
         </>
     )

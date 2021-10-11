@@ -1,43 +1,43 @@
 import React, { useState } from "react";
 import styled from "styled-components/native";
-import { WordContainer } from "../../Atoms/Text/WordContainer";
+import { BtnBasic } from "../../Atoms/Button/BtnBasic";
+import { WordWrapper } from "../../Atoms/Text/WordWrapper"
 
 
-const Wrapper = styled.View`
-    width: 90%;
-    height: 90%;
-    background-color: rebeccapurple;
+
+const FlatWrapper = styled.FlatList`
+	width: 100%;
+	height: 100%;
+	margin: auto;
+	padding : 5%;
+	background-color:${p=>p.theme["gray"]};
+	display : flex;
+	margin-bottom: 10px;
 `
 
 
-
-const GridWrapper = styled.View`
-    width: 100%;
-    height: 100%;
-`
 
 
 
 
 type props={
-    lists : object,
-    setSubjectText : Function,
+	lists : object,
+	setSubjectText : Function,
+	closeModal : () =>{}
 }
 
-export const SubjectSelecter:React.FC<props> = ({lists, setSubjectText}) =>{
+export const SubjectSelecter = ({lists, setSubjectText, closeModal} : props) =>{
 
 
-    return(
-        <Wrapper>
-        {lists && 
-            <GridWrapper>
-            {Object.keys(lists).map((list, idx)=>{
-                return(
-                    <WordContainer key={idx} text={list} setSubjectText={setSubjectText} />
-                )
-            })}
-            </GridWrapper>
-        }
-        </Wrapper>
-    )
+	
+	return (
+		<>
+			<FlatWrapper
+				data={Object.keys(lists)}
+				renderItem={({item})=><WordWrapper t={item} onPress={setSubjectText}/>}
+				keyExtractor={(item, index) => index.toString()}
+			/>
+			<BtnBasic onPress={closeModal} t={"취소"} w={"100%"}/>
+	  </>
+	);
 }
