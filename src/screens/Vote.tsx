@@ -9,9 +9,6 @@ import { subjectDatas } from "../Utils/Data/subjectLists";
 
 
 
-
-
-
 const Wrapper = styled.View`
     width: 100%;
     height: 90%;
@@ -85,7 +82,7 @@ export const Vote:React.FC<props> =({playerCnt, liarNumber, subjectText, playWor
                     <TextComp t={"라이어 선택"} fs={"30px"} m={"0 auto 20px auto"}/>
                     <FlatWrapper 
                     data={playerArray}
-                    renderItem={({item}) => <WordWrapper t={item} onPress={selectLiarHander}/>}
+                    renderItem={({item}) => <WordWrapper t={+item+1} onPress={()=>selectLiarHander(+item)}/>}
                     keyExtractor={(item, index) => index.toString()}
                     />
                 </>
