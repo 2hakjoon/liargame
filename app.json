@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "liargame",
-    "slug": "liargame",
+    "name": "LiarGame",
+    "slug": "LiarGame",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -29,7 +29,8 @@
       },
       "config": {
         "googleMobileAdsAppId": "ca-app-pub-4810271598340264~4534012582"
-      }
+      },
+      "package": "com.liargame.test"
     },
     "web": {
       "favicon": "./assets/favicon.png"

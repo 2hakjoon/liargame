@@ -11,7 +11,7 @@ const TextWrapper = styled.TouchableOpacity`
   justify-content: center;
   text-align: center;
   padding : 16px;
-  margin: 8px;
+  margin: 8px 16px 16px 16px;
   background-color: ${p=>p.theme["red"]};
 `
 

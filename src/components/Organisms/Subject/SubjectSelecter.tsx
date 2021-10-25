@@ -8,11 +8,9 @@ import { WordWrapper } from "../../Atoms/Text/WordWrapper"
 const FlatWrapper = styled.FlatList`
 	width: 100%;
 	height: 100%;
-	margin: auto;
-	padding : 5%;
 	background-color:${p=>p.theme["gray"]};
 	display : flex;
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 `
 
 

@@ -69,7 +69,7 @@ export const GiveRole: React.FC<props> = ({
                 return (
                   <Board
                     key={idx}
-                    t={`제시어는 ${playWord}입니다!`}
+                    t={`제시어는 "${playWord}" 입니다!`}
                     onPress={() => hideInfo(idx)}
                   />
                 );
