@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components/native"
-import { theme } from "../../../Utils/Theme/theme"
+import i18n from "../../../Utils/LangPack/i18nConfig"
 
 
 const Wrapper = styled.Text<TextProps>`
@@ -11,21 +11,21 @@ const Wrapper = styled.Text<TextProps>`
 
 type props = {
     fc?: string,
-    t: string|number,
+    t: string,
     m?: string
     fs? :string
 }
-
-type TextProps = {
-    fc : string
-    fs : string
-    m : string
+type TextProps ={
+    fc?:string,
+    fs?:string,
+    m?:string
 }
-
+const rgxCheckWord = /^[ㅏ-ㅣㄱ-ㅎ가-힣a-zA-Z ]+$/gm
 export const TextComp = ({fc, t, m, fs} : props) => {
+    //console.log(t.match(rgxCheckWord))
     return(
         <Wrapper fc={fc} fs={fs} m={m}>
-            {t}
+            {t.match(rgxCheckWord) ? i18n(t) : t}
         </Wrapper>
     )
 }
@@ -33,5 +33,6 @@ export const TextComp = ({fc, t, m, fs} : props) => {
 TextComp.defaultProps ={
     fc : "white",
     fs : "16px",
-    m : "0 0 0 0"
+    m : "0 0 0 0",
+    t : " "
 }

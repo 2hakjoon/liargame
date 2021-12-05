@@ -21,8 +21,10 @@ const adBannerUnitId = Constants.isDevice && !__DEV__ ? setBannerId : testID;
 const Wrapper = styled.View`
   width: 100%;
   position: absolute;
-  justify-content: center;
   bottom : 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 //console.log(adBannerUnitId)
@@ -36,6 +38,7 @@ export const BottomBannerAds = () => (
     onDidFailToReceiveAdWithError={(err) => {
       console.log(err);
     }}
+    
     />
     </Wrapper>
 );

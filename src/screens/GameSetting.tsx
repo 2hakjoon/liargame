@@ -48,7 +48,11 @@ export const GameSetting: React.FC<props> = ({
         <>
           <ColumnWrapper w={"100%"} h={"80%"} jc={"flex-start"}>
             <FlexWrapper w={"100%"} h={"30%"}>
-              <TextComp t={`테마 : ${subjectText}`} fc={"white"}/>
+              <FlexWrapper>
+                <TextComp t={`테마`} fc={"white"}/>
+                <TextComp t={`:`} fc={"white"} m={"0 10px"}/>
+                <TextComp t={`${subjectText}`} fc={"white"}/>
+              </FlexWrapper>
               <BtnBasic t={"변경"} onPress={BtnSubject}/>
             </FlexWrapper>
             <Counter count={playerCnt} setCount={setPlayerCnt} display={!selectModal} />

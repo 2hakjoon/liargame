@@ -6,16 +6,6 @@ import { TextComp } from "../Atoms/Text/TextComp"
 
 
 
-const Wrapper = styled.View`
-    width: 100%;
-    position :relative;
-    display: flex;
-    flex-direction: row;
-`
-
-
-
-
 
 type props={
     count : number,
@@ -44,7 +34,7 @@ export const Counter:React.FC<props> = ({count, setCount, display}) => {
                 <TextComp t={"인원 수"}/>
                 <FlexWrapper w={"40%"}>
                     <BtnBasic t={"-"} onPress={minusCountHandler}/>
-                    <TextComp t={count}/>
+                    <TextComp t={String(count)}/>
                     <BtnBasic t={"+"} onPress={plusCountHandler}/>
                 </FlexWrapper>
             </FlexWrapper>

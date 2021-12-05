@@ -25,9 +25,6 @@ type props={
 }
 
 export const SubjectSelecter = ({lists, setSubjectText, closeModal} : props) =>{
-
-
-	
 	return (
 		<>
 			<FlatWrapper
@@ -35,7 +32,7 @@ export const SubjectSelecter = ({lists, setSubjectText, closeModal} : props) =>{
 				renderItem={({item})=><WordWrapper t={item} onPress={setSubjectText}/>}
 				keyExtractor={(item, index) => index.toString()}
 			/>
-			<BtnBasic onPress={closeModal} t={"취소"} w={"100%"}/>
+			<BtnBasic onPress={closeModal} t={"닫기"} w={"100%"}/>
 	  </>
 	);
 }

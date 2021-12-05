@@ -3,6 +3,7 @@ import React from "react";
 import { useState } from "react";
 import { TextComp } from "../components/Atoms/Text/TextComp";
 import { Board } from "../components/Molecules/Board";
+import { FlexWrapper } from "../components/Atoms/Layout/FlexWrapper";
 
 const Wrapper = styled.View`
   display: flex;
@@ -51,7 +52,12 @@ export const GiveRole: React.FC<props> = ({
 
   return (
     <Wrapper>
-      <TextComp t={`제시어 : ${subjectText}`} fs ={"30px"} m={"0 auto"}/>
+      <FlexWrapper jc={"center"}>
+        <TextComp t={"제시어"} fs ={"30px"} m={"0"}/>
+        <TextComp t={" : "} fs ={"30px"} m={"0 10px"}/>
+        <TextComp t={`${subjectText}`} fs ={"30px"} m={"0"}/>
+      </FlexWrapper>
+
 
       {showInfo ? (
         <>
@@ -61,7 +67,8 @@ export const GiveRole: React.FC<props> = ({
                 return (
                   <Board
                     key={idx}
-                    t={"당신은 라이어입니다."}
+                    t={"당신은 라이어입니다"}
+                    type={"liar"}
                     onPress={() => hideInfo(idx)}
                   />
                 );
@@ -69,7 +76,8 @@ export const GiveRole: React.FC<props> = ({
                 return (
                   <Board
                     key={idx}
-                    t={`제시어는 "${playWord}" 입니다!`}
+                    t={`${playWord}`}
+                    type={"word"}
                     onPress={() => hideInfo(idx)}
                   />
                 );
@@ -79,7 +87,7 @@ export const GiveRole: React.FC<props> = ({
         </>
       ) : (
         <Board
-          t={"아래 버튼을 눌러 역할을 확인해주세요!"}
+          t={"아래 버튼을 눌러 역할을 확인해주세요"}
           onPress={toNextRoleStep}
         />
       )}

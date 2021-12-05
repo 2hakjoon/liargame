@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "LiarGame",
+    "name": "Liar Game",
     "slug": "LiarGame",
-    "version": "1.0.1",
+    "version": "1.2.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "resizeMode": "cover",
+      "backgroundColor": "#c62828"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -24,16 +24,17 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#c62828"
       },
       "config": {
         "googleMobileAdsAppId": "ca-app-pub-4810271598340264~4534012582"
       },
-      "package": "com.liargame.test"
+      "package": "com.liargame.test",
+      "versionCode": 4
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/icon.png"
     },
     "description": ""
   }

@@ -1,40 +1,47 @@
 import React from "react";
 import styled from "styled-components/native";
 import { theme } from "../../../Utils/Theme/theme";
+import { TextComp } from "../Text/TextComp";
 
 const ButtonContainer = styled.TouchableOpacity<containerProps>`
-  padding: 16px;
+  padding: ${p=>p.p};
   border-radius: 10px;
-  background-color:${theme["red"]};
+  background-color:${p=>p.theme[p.bgColor]};
   width: ${p=>p.w};
+  height: ${p=>p.h};
+  margin : ${p=>p.m};
 `;
 
-const ButtonText = styled.Text`
-  font-size: 16px;
-  text-align: center;
-  color: white;
-`;
 
 type props={
     onPress : Function
     t : string
     bc?: string
     w? : string
+    h? : string
+    m? : string
+    p? : string
 }
 
 type containerProps = {
   bgColor : string
   w : string
+  h : string
+  m : string
+  p : string
 }
 
 
-export const BtnBasic = ({ onPress, bc, t, w} : props) => (
-  <ButtonContainer onPress={()=>onPress()} bgColor={bc} w={w}>
-    <ButtonText>{t}</ButtonText>
+export const BtnBasic = ({ onPress, bc, t, w, h, m, p} : props) => (
+  <ButtonContainer onPress={()=>onPress()} bgColor={bc} w={w} h={h} m={m} p={p}>
+    <TextComp t={t} m={"0 auto"}/>
   </ButtonContainer>
 );
 
 BtnBasic.defaultProps = {
-  bgColor : theme.red,
-  w : "auto"
+  bc : "red",
+  w : "auto",
+  h : "auto",
+  m : "0",
+  p : "16px"
 }
