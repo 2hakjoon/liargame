@@ -5,9 +5,11 @@ const checkSubjectLangPack = (subjects, langPack) => {
     const langPackKeys = Object.keys(langPack);
     //console.log(langPackKeys)
     for(let i=0; i<langObjKeys.length; i++){
+        //제시어의 카테고리가 있는지 먼저 확인. 없으면 에러처리
         if(langPackKeys.includes(langObjKeys[i])){
             for(let j=0; j<subjects[langObjKeys[i]].length; j++){
                 //console.log(subjects[langObjKeys[i]][j])
+                //제시어가 있는지 확인. 없으면 에러처리
                 if(!langPackKeys.includes(subjects[langObjKeys[i]][j])){
                     throw `langpack doesn't have ${subjects[langObjKeys[i]][j]}`
                 }

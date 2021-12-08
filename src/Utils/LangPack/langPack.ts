@@ -2,14 +2,15 @@ import { subjectLangPack } from "../Data/subjectLists"
 
 const splitEachLang = (langObj, langList) => {
   let newObj = {}
-
+  //langObj의 key를 가져와서 나중에 참조용 인덱스로 사용
   let langObjKeys = Object.keys(langObj)
-  //각 언어별 객체 생성
+
+  //langList내의 언어별로 객체 생성
   for(let i=0; i<langList.length; i++){
-    //console.log(langList[i])
     let lang = langList[i]
     newObj[lang] = {}
 
+    //langObj에서 해당 언어의 value를 가져옴.
     for (let j=0; j<langObjKeys.length; j++) {
       let value = langObj[langObjKeys[j]][lang];
         newObj[lang] = {
