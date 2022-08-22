@@ -10,7 +10,6 @@ import { getRandomWord } from "./src/Utils/Logic/subjectFunc";
 import { setPlayerRole } from "./src/Utils/Logic/setPlayer";
 import { Vote } from "./src/screens/Vote";
 import { theme } from "./src/Utils/Theme/theme";
-import { BottomBannerAds } from "./src/Utils/Admob/Admob";
 import { setLanguagePack } from './src/Utils/LangPack/langPack';
 
 const Wrapper = styled.View`
@@ -97,7 +96,6 @@ export default function App() {
               resetGameStep={resetGameStep}
               />
               )}
-            <BottomBannerAds />
             <StatusBar hidden={true} />
           </Wrapper>
         </SafeAreaView>

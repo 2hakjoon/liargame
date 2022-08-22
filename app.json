@@ -17,21 +17,15 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true,
-      "config": {
-        "googleMobileAdsAppId": "ca-app-pub-4810271598340264~4119079616"
-      }
+      "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#c62828"
       },
-      "config": {
-        "googleMobileAdsAppId": "ca-app-pub-4810271598340264~4534012582"
-      },
       "package": "com.liargame.test",
-      "versionCode": 4
+      "versionCode": 5
     },
     "web": {
       "favicon": "./assets/icon.png"
